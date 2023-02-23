@@ -46,7 +46,6 @@ ex3(String phrase) {
   return numbers;
 }
 
-// check if a character is a capital letter
 bool isCapitalLetter(String character) {
   return character.codeUnitAt(0) >= 65 && character.codeUnitAt(0) <= 90;
 }
@@ -65,17 +64,17 @@ String ex4(String characters) {
 }
 
 void main() {
-  int optiune = 4;
+  int optiune = 3;
   switch (optiune) {
     case 1:
       print(ex1());
       break;
     case 2:
-      print(ex2("Salut!, eu sunt     Ionut    "));
+      print(ex2("Salut!, eu sunt     Alex    "));
       break;
     case 3:
       print(ex3(
-          "11Salu11t!, 12312312 eu sunt 23123 11.32  Ionut    . Am 3 chestiute"));
+          "11Salu11t!, 12312312 eu sunt 23123 11.32  Alex    . Am 3 chestiute"));
       break;
     case 4:
       print(ex4("SalutCeMaaiFaci"));
