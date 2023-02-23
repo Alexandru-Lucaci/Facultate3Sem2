@@ -21,13 +21,24 @@ ex1([int numberOfPrimes = 100]) {
   return list;
 }
 
+int nrContains(String element) {
+  int counter = 0;
+  for (int i = 0; i < element.length; i++) {
+    (",/!?\'".contains(element[i]) == true) ? counter++ : counter = counter;
+  }
+  return counter;
+}
+
 ex2(String phrase) {
   var listOfWords = [];
   phrase.trim().split(" ").forEach((element) {
     element.length > 0
-        ? (",/!?\'".contains(element[element.length - 1]) == false)
+        ? (".,/!?\'".contains(element[element.length - 1]) == false)
             ? listOfWords.add(element)
-            : listOfWords.add(element.substring(0, element.length - 1))
+            : (nrContains(element) == 1)
+                ? listOfWords.add(element.substring(0, element.length - 1))
+                : listOfWords.add(
+                    element.substring(0, element.length - nrContains(element)))
         : null;
   });
   return listOfWords;
@@ -64,13 +75,13 @@ String ex4(String characters) {
 }
 
 void main() {
-  int optiune = 3;
+  int optiune = 2;
   switch (optiune) {
     case 1:
       print(ex1());
       break;
     case 2:
-      print(ex2("Salut!, eu sunt     Alex    "));
+      print(ex2("Salut!,,, eu sunt     Alex    "));
       break;
     case 3:
       print(ex3(
