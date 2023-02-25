@@ -7,7 +7,8 @@ import requests
 import tqdm
 import cgi
 import requests
-HOST = "192.168.100.34"
+# HOST = "192.168.100.34"
+HOST = "localhost"
 PORT = 8000
 HTML_FILE = "index.html"
 
@@ -21,6 +22,19 @@ def get_header():
     header = header[1:]
     header = [th.lower().split(" ")[0] for th in header]
     return header
+
+
+def checkAlreadyExists(dict_data_all: dict, dict_data: dict) -> bool:
+    for key in dict_data_all.keys():
+        if key != '#':
+            print(key, dict_data_all[key].keys())
+            for params in dict_data_all[key].keys():
+                ok = True
+                if dict_data_all[key][params] != dict_data[params]:
+                    ok = False
+                if ok == True:
+                    return True
+    return False
 
 
 def get_data():
@@ -48,6 +62,7 @@ def get_data():
                 aux_dict[header[i].lower()] = aux[i].text
         film = aux_dict
         result[th.text] = film
+
     return result
 
 
@@ -131,7 +146,7 @@ class NeuralHttp(BaseHTTPRequestHandler):
 
     def do_POST(self):
         self.send_response(200)
-        self.send_header('Content-type', 'application/json')
+        self.send_header('Content-type', 'text/html')
         self.end_headers()
         # <--- Gets the size of data
         content_length = int(self.headers['Content-Length'])
@@ -140,19 +155,74 @@ class NeuralHttp(BaseHTTPRequestHandler):
         post_data = self.rfile.read(content_length)
         post_data = post_data.decode('utf-8')
 
-        print(type(post_data))
-
         print(post_data)
         post_data = post_data.replace(
             ' ', '').replace('"', '').replace("'", '')
+        post_data = post_data.split("&")
+        post_data = [i.replace("+", " ") for i in post_data]
+        post_data = {i.split("=")[0]: i.split("=")[1] for i in post_data}
+
         print(post_data)
 
         headers = get_header()
         print(headers)
+        data = get_data()
+# "name": "The Godfather", "type": "Crime", "film": "Drama"
+        existed = False
+        # check if the checkbox is checked
+        if post_data.get('checked') is not None:
+            # check if the film already exists
+            if (checkAlreadyExists(data, post_data) and post_data["checked"]):
+                message = {"message": "Film already exists",
+                           "data": f"{time.strftime('%Y-%m-%d %H: %M: %S', time.localtime(time.time()))}"}
+                self.wfile.write(bytes(str(message), 'utf-8'))
+                self.do_GET()
+                existed = True
+        if not existed:
+            soup = BeautifulSoup(open("index.html"), "html.parser")
+            table = soup.find("tbody")
+            # add to the end the new entry
+            table.append('<tr>')
+            table.append(
+                f"""
+                <th scope="row">{len(data)}</th>
+                <td>{post_data["name"]}</td>
+                <td>{post_data["type"]}</td>
+                <td>{post_data["film"]}</td>
+                </tr>""")
 
-        message = {"message": "Received POST request!",
-                   "data": f"{time.strftime('%Y-%m-%d %H: %M: %S', time.localtime(time.time()))}"}
-        self.wfile.write(bytes(str(message), 'utf-8'))
+            print(soup.prettify())
+            with open("index.html", "w") as file:
+                file.write(str(soup).replace("&lt;", "<").replace("&gt;", ">"))
+            message = {"message": "Film added",
+                       "data": f"{time.strftime('%Y-%m-%d %H: %M: %S', time.localtime(time.time()))}"}
+            self.wfile.write(bytes(str(message), 'utf-8'))
+            self.do_GET()
+
+    def do_PUT(self):
+        self.send_response(200)
+        self.send_header('Content-type', 'text/html')
+        self.end_headers()
+        # <--- Gets the size of data
+        content_length = int(self.headers['Content-Length'])
+        # <--- Gets the data itself
+
+        post_data = self.rfile.read(content_length)
+        post_data = post_data.decode('utf-8')
+
+        print(post_data)
+        post_data = post_data.replace(
+            ' ', '').replace('"', '').replace("'", '')
+        post_data = post_data.split("&")
+        post_data = [i.replace("+", " ") for i in post_data]
+        post_data = {i.split("=")[0]: i.split("=")[1] for i in post_data}
+
+        print(post_data)
+
+        headers = get_header()
+        print(headers)
+        data = get_data()
+        print('here')
 
 
 server = HTTPServer((HOST, PORT), NeuralHttp)
