@@ -57,14 +57,23 @@ ex3(String phrase) {
   return numbers;
 }
 
+ex3Sum(String phrase) {
+  var lista = ex3(phrase);
+  print(lista);
+  num suma = 0;
+  for (var item in lista) {
+    suma += item;
+  }
+  return suma;
+}
+
 bool isCapitalLetter(String character) {
   return character.codeUnitAt(0) >= 65 && character.codeUnitAt(0) <= 90;
 }
 
 String ex4(String characters) {
   var sb = StringBuffer();
-
-  for (int i = 0; i < characters.length; i++) {
+  for (int i = 1; i < characters.length; i++) {
     if (isCapitalLetter(characters[i]) == true)
       sb.write('_' + characters[i].toLowerCase());
     else
@@ -75,7 +84,7 @@ String ex4(String characters) {
 }
 
 void main() {
-  int optiune = 2;
+  int optiune = 4;
   switch (optiune) {
     case 1:
       print(ex1());
@@ -84,11 +93,11 @@ void main() {
       print(ex2("Salut!,,, eu sunt     Alex    "));
       break;
     case 3:
-      print(ex3(
-          "11Salu11t!, 12312312 eu sunt 23123 11.32  Alex    . Am 3 chestiute"));
+      print(ex3Sum(
+          "11Salu11t!, 12312312 eu sunt 23123 11.32  Alex    . Am 3! chestiute"));
       break;
     case 4:
-      print(ex4("SalutCeMaaiFaci"));
+      print(ex4("SalutCeMaiFaci"));
       break;
     default:
       print("Hello World");
