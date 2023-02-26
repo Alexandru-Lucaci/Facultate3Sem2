@@ -66,6 +66,9 @@ def get_data():
     return result
 
 
+# print(get_data())
+
+
 class NeuralHttp(BaseHTTPRequestHandler):
     def do_GET(self):
         self.send_response(200)
@@ -223,6 +226,7 @@ class NeuralHttp(BaseHTTPRequestHandler):
         print(headers)
         data = get_data()
         print('here')
+        # if(checkAlreadyExists(data,post_data))
 
 
 server = HTTPServer((HOST, PORT), NeuralHttp)
