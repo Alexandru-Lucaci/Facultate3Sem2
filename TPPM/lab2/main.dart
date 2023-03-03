@@ -98,7 +98,8 @@ bool isAnagram(String first, String second) {
   return true;
 }
 
-void main() {
+void main(List<String> args) {
+  print(args);
   var l = List<int>.from([-2, 1, -3, 4, -1, 2, 1, -5, 4]);
   print(sumSubList(l));
 
