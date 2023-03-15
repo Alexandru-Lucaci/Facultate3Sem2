@@ -23,26 +23,30 @@ def createInMatrix(n):
 def HouseholderAlg(A,b):
     # u vector
     u=np.zeros(A.shape[0])
-    epsilon = 0.0000001
+    epsilon = 0.00001
     n=A.shape[0]
     Qbarat = createInMatrix(A.shape[0])
-    print("Qbarat", Qbarat)
     # A = QR
     for r in range(n-1):
+        print("r=",r)
         # u=np.zeros(A.shape[0])
         # cosntruct Pr - projection matrix 
         # sigma = sign(a[r+1][r]) * ||a[r+1][r]||_2
         sigma = 0
         for i in range(r, n):
+            print(f"A[{i}][{r}]={A[i][r]}")
             sigma += A[i][r]**2
         if sigma < epsilon:
             # r=r+1 if and only if Pr = In
+            print('break')
             break
+        print("sigma=",sigma)
         k = sigma**0.5
+        print("k=",k)
         if A[r][r] >0:
             k = -k
         beta = sigma - k*A[r][r]
-
+        print("beta=",beta)
         # construct Pr
         u[r] = A[r][r] - k
         for i in range(r+1, n):
@@ -54,7 +58,8 @@ def HouseholderAlg(A,b):
             # y = yi/beta = (Aej,u)/beta = sum from i=r to n-1 of Aij*ui/beta)
             y = 0
             for i in range(r, n):
-                y += A[i][j]*u[i]/beta
+                y += A[i][j]*u[i]
+            y = y/beta
             # Aij = Aij - yui
             for i in range(r, n):
                 A[i][j] -= y*u[i]
@@ -65,25 +70,40 @@ def HouseholderAlg(A,b):
             A[i][r] = 0
         
         # b = Pr*b
-        
+        # print("b before", b)
+        y= 0
         for i in range(r, n):
-            u[i] = u[i]/beta
-        for i in (r,n-1):
-            b[i] = b[i] - u[i]*b[r]
+            y+= b[i]*u[i]
+        y = y/beta
+        for i in range(r, n):
+            b[i] -= y*u[i]        
+        # print("b after", b)
+
+
         # Qbarat = Qbarat*Pr
+        # transformarea coloanelor j = r+1,...,n-1
+        print("Qbarat before", Qbarat)
         for j in range(n):
-            
+            y=0
             for i in range(r, n):
-                
-                Qbarat[i][j] -= u[i]*Qbarat[r][j]
+                y += Qbarat[i][j]*u[i]
+            y = y/beta
+            for i in range(r, n):
+                Qbarat[i][j] -= u[i]*y
+            
+        print("R", Qbarat)
+        print("Q", A)
     return Qbarat,A
 
 # test
 A = np.array([[0,0,4],[1,2,3],[0,1,2]])
 s = np.array([3,2,1])
 
-print(HouseholderAlg(A,s))
+# q,r = HouseholderAlg(A,s)
+q,r=HouseholderAlg(A,s)
 
+# multiplication q r
+print("q r", np.matmul(q,r))
 
 
 
