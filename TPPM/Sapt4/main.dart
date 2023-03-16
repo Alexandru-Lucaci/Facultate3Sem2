@@ -2,7 +2,6 @@
 import 'dart:io';
 import 'dart:typed_data';
 import 'jsonDiff.dart' as  jsonDiff;
-// 1. Scrieti o functie care primeste ca parametru un String si o lista de expresii regulate si returneaza o lista de stringuri care fac match pe cel putin una dintre expresiile regulate primite ca parametru.
 Map<String, List<dynamic>> match(String s, List<RegExp> l) {
   List<String> result = [];
   List<dynamic> matches = [];
@@ -23,7 +22,7 @@ Map<String, List<dynamic>> match(String s, List<RegExp> l) {
 
   return dict;
 }
-// 2. Implementati o Stiva folosind fisiere ca storage.
+
 
 class MyStack {
   final String _filePath;
@@ -71,9 +70,6 @@ class MyStack {
     List<String> lines = File(_filePath).readAsLinesSync();
     int value = int.parse(lines[_top]);
     //print(value);
-
-    // Remove the top element from the file
-    // File(_filePath).writeAsStringSync('${_top}\n', mode: FileMode.write);
 
     // remove the last element 
     lines.removeLast();
@@ -187,7 +183,6 @@ void main(){
   print(fs.peek()); // -1
   print(fs.isEmpty()); // true
 
-  // 3. Scrieti o clasa care sa implementeze operatiile de baza ale unui calculator (adunare, scadere, inmultire, impartire, modulo) si sa permita operatiile cu orice tip de date numeric (int, double, String).
   MathOps<int, int> m = MathOps();
   print(m.sub(1, 2)); // -1
   print(m.sub(1, 4)); // -1

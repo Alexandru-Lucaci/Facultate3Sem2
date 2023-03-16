@@ -20,6 +20,9 @@ def log(type, message,error = False):
 def createInMatrix(n):
     return np.identity(n)
 
+def transpusa(A):
+    return np.transpose(A)
+
 def HouseholderAlg(A,b):
     # u vector
     u=np.zeros(A.shape[0])
@@ -91,17 +94,19 @@ def HouseholderAlg(A,b):
             for i in range(r, n):
                 Qbarat[i][j] -= u[i]*y
             
-        print("R", Qbarat)
+        print("R", transpusa(Qbarat))
         print("Q", A)
-    return Qbarat,A
+    return transpusa(Qbarat),A
 
 # test
 A = np.array([[0,0,4],[1,2,3],[0,1,2]])
 s = np.array([3,2,1])
-
+# print(transpusa(A))
 # q,r = HouseholderAlg(A,s)
 q,r=HouseholderAlg(A,s)
 
+print("Q", q,'\n')
+print("R", r,'\n')
 # multiplication q r
 print("q r", np.matmul(q,r))
 
