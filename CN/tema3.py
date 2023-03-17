@@ -211,4 +211,141 @@ def calcul_norma(A,b):
         norma += (resolverMy[i] - resolverScipY[i])**2
     return math.sqrt(norma)
 
-print( calcul_norma(A,s))
+# print( calcul_norma(A,s))
+
+def subVect(x,y):
+    n = len(x)
+    z = np.array([0]*n)
+    print(x,y)
+    for i in range(n):
+        z[i] = (x[i]**2) - (y[i]**2)
+    return z
+def calcul_norma2(A,b):
+    print("A",A)
+    print("b",b)
+    myResolve = resolveLiniarSystem(A,b,False)
+    print("myResolve",myResolve)
+    multiplication = doMultimplication(A,myResolve)
+    print("multiplication",multiplication)
+    sub = subVect(multiplication,b)
+    print("sub",sub)
+    #  calcul norma
+    norma = 0
+    for i in range(len(b)):
+        norma += (sub[i])
+    return math.sqrt(norma)
+
+
+print(calcul_norma2(A,s))
+def calcul_norma3(A,b):
+    print("A",A)
+    print("b",b)
+    myResolve = resolveLiniarSystem(A,b,True)
+    print("myResolve",myResolve)
+    multiplication = doMultimplication(A,myResolve)
+    print("multiplication",multiplication)
+    sub = subVect(multiplication,b)
+    print("sub",sub)
+    #  calcul norma
+    norma = 0
+    for i in range(len(b)):
+        norma += (sub[i])
+    return math.sqrt(norma)
+A = np.array([[0,0,4],[1,2,3],[0,1,2]])
+s = np.array([4,10,4])
+print(calcul_norma3(A,s))
+
+
+def calcul_norma4(A,b):
+    myResolve = resolveLiniarSystem(A,b)
+    suma = 0 
+    for i in range(len(b)):
+        suma += ((myResolve[i]) - (b[i]))**2
+    print(suma)
+    norma = math.sqrt(suma)
+    suma = 0 
+    for i in range(len(b)):
+        suma += b[i]**2
+    print (suma)
+    norma = norma/math.sqrt(suma)
+    return norma
+print(calcul_norma4(A,s))
+
+def calcDeterminant(A):
+    n = A.shape[0]
+    det = 1
+    for i in range(n):
+        det *= A[i][i]
+    return det
+def generate_epsilon(m):
+    epsilon = 1
+    for i in range(m):
+        epsilon /= 10
+    return epsilon
+def inverse_qr(A):
+    epsilon = generate_epsilon(6)
+    Q, R = HouseholderAlg(A,[0]*A.shape[0])
+    n = A.shape[0]
+    A_inv = [[0.0]*n for i in range(n)]
+    if calcDeterminant(R) < epsilon:
+        return False
+    else:
+        for j in range(n):
+            ej = np.array([0]*n)
+            ej[j] = 1
+            QT = transpusa(Q)
+            b = doMultimplication(QT,ej)
+            print(f'{j} {b}')
+            # RX = b
+            # reverse b
+            reversed_b = np.array([0]*n)
+            for i in range(n):
+                reversed_b[i] = b[n-i-1]
+            b= reversed_b
+            x = [0.0]*n
+            printSystem(R,b)
+            for i in range(n,0,-1):
+                sum = 0
+                for lj in range(i,n):
+                    sum += R[i-1][lj]*x[lj]
+                print(f"(b[i-1] - sum) = {b[i-1]} - {sum} = {b[i-1] - sum}")
+                print(f"R[i-1][i-1] = {R[i-1][i-1]}")
+                print (f"(b[i-1] - sum)/R[i-1][i-1]) = {(b[i-1] - sum)/R[i-1][i-1]}")
+                x[i-1] = float((b[i-1] - sum)/R[i-1][i-1])
+            # add x to column j of A_inv
+            print(j,x)
+            for k in range(n):
+                A_inv[j][k] = x[k]
+            print('done',A_inv)
+        # print(A_inv)
+        return A_inv
+A = np.array([[0,0,4],[1,2,3],[0,1,2]])
+s = np.array([4,10,4])
+print(inverse_qr(A))
+A = np.array([[0,0,4],[1,2,3],[0,1,2]])
+s = np.array([4,10,4])
+def calc_norm_inv(A):
+    resolverScipY = np.linalg.inv(A)
+    resolverMy = inverse_qr(A)
+    print(resolverMy)
+    print(resolverScipY)
+   
+    norma = 0
+    for i in range(A.shape[0]):
+        for j in range(A.shape[0]):
+            norma += (resolverMy[i][j] - resolverScipY[j][i])**2
+    return math.sqrt(norma)
+import random
+print(calc_norm_inv(A))
+def generateRandomMatrixAndB(n):
+    A = np.array([[0.0]*n for i in range(n)])
+    for i in range(n):
+        for j in range(n):
+            A[i][j] = random.randint(1,10)
+    b = [0]*n
+    for i in range(n):
+        b[i] = random.randint(1,10)
+    return A, b
+a,b = generateRandomMatrixAndB(100)
+
+print(calcul_norma(a,b))
