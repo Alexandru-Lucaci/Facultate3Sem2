@@ -2,6 +2,7 @@ import subprocess
 import sys
 from threading import Thread
 import time
+import math
 try:
     import numpy as np
 except:
@@ -196,8 +197,18 @@ def resolveLiniarSystem(A,b,sciHub = False):
         x[i-1] = (QtB[i-1] - sum)/r[i-1][i-1]
 
     print("Solutia este: ",x)
-    
+    return x
 
     
-resolveLiniarSystem(A,s,True)
-resolveLiniarSystem(A,s,False)
+# resolveLiniarSystem(A,s,True)
+# resolveLiniarSystem(A,s,False)
+def calcul_norma(A,b):
+    resolverMy = resolveLiniarSystem(A,b,False)
+    resolverScipY = resolveLiniarSystem(A,b,True)
+    # calcul norma
+    norma = 0
+    for i in range(len(b)):
+        norma += (resolverMy[i] - resolverScipY[i])**2
+    return math.sqrt(norma)
+
+print( calcul_norma(A,s))
