@@ -103,8 +103,8 @@ def HouseholderAlg(A,b):
     return transpusa(Qbarat),A
 
 # test
-A = np.array([[0,0,4],[1,2,3],[0,1,2]])
-s = np.array([4,10,4])
+A = np.array([[0,0,4],[1,2,3],[0,1,2]], dtype='f')
+s = np.array([4,10,4], dtype='f')
 # print(transpusa(A))
 # q,r = HouseholderAlg(A,s)
 # q,r=HouseholderAlg(A,s)
@@ -119,13 +119,13 @@ s = np.array([4,10,4])
 #  exercitiul 1
 # Se dau n dimensiunea sistemului, Epsilon eroarea, A matricea sistemului, s un vector
 def get_b_vector(n,A,s):
-    b = np.array([0]*n)
+    b = np.array([0]*n, dtype='f')
     for i in range(n):
         sum = 0 
         for j in range(n):
             sum += A[i][j]*s[j]
         b[i] = sum
-    reversedX = np.array([0]*n)
+    reversedX = np.array([0]*n, dtype='f')
     for i in range(n):
         reversedX[i] = b[n-i-1]
     return reversedX
@@ -134,7 +134,7 @@ def get_b_vector(n,A,s):
 
 def doMultimplication(A,b):
     n = len(b)
-    x = np.array([0]*n)
+    x = np.array([0]*n, dtype='f')
     for i in range(n):
         sum = 0
         for j in range(n):
@@ -142,7 +142,7 @@ def doMultimplication(A,b):
         x[i] = sum
         
     #  reverse x
-    reversedX = np.array([0]*n)
+    reversedX = np.array([0]*n, dtype='f')
     for i in range(n):
         reversedX[i] = x[n-i-1]
     return reversedX
@@ -173,7 +173,7 @@ def printSystem(A,b):
 
 def resolveLiniarSystem(A,b,sciHub = False):
     n= A.shape[0]
-    x = np.array([0]*n)
+    x = np.array([0]*n, dtype='f')
     # printSystem(A,b)
     if sciHub:
         q, r = scipy.linalg.qr(A)
@@ -215,7 +215,7 @@ def calcul_norma(A,b):
 
 def subVect(x,y):
     n = len(x)
-    z = np.array([0]*n)
+    z = np.array([0]*n, dtype='f')
     print(x,y)
     for i in range(n):
         z[i] = (x[i]**2) - (y[i]**2)
@@ -251,8 +251,8 @@ def calcul_norma3(A,b):
     for i in range(len(b)):
         norma += (sub[i])
     return math.sqrt(norma)
-A = np.array([[0,0,4],[1,2,3],[0,1,2]])
-s = np.array([4,10,4])
+A = np.array([[0,0,4],[1,2,3],[0,1,2]], dtype='f')
+s = np.array([4,10,4], dtype='f')
 print(calcul_norma3(A,s))
 
 
@@ -291,14 +291,14 @@ def inverse_qr(A):
         return False
     else:
         for j in range(n):
-            ej = np.array([0]*n)
+            ej = np.array([0]*n, dtype='f')
             ej[j] = 1
             QT = transpusa(Q)
             b = doMultimplication(QT,ej)
             print(f'{j} {b}')
             # RX = b
             # reverse b
-            reversed_b = np.array([0]*n)
+            reversed_b = np.array([0]*n, dtype='f')
             for i in range(n):
                 reversed_b[i] = b[n-i-1]
             b= reversed_b
@@ -338,7 +338,7 @@ def calc_norm_inv(A):
 import random
 print(calc_norm_inv(A))
 def generateRandomMatrixAndB(n):
-    A = np.array([[0.0]*n for i in range(n)])
+    A = np.array([[0.0]*n for i in range(n)], dtype='f')
     for i in range(n):
         for j in range(n):
             A[i][j] = random.randint(1,10)
@@ -346,6 +346,6 @@ def generateRandomMatrixAndB(n):
     for i in range(n):
         b[i] = random.randint(1,10)
     return A, b
-a,b = generateRandomMatrixAndB(100)
+a,b = generateRandomMatrixAndB(3)
 
 print(calcul_norma(a,b))
