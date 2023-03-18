@@ -1,28 +1,22 @@
-
 import 'dart:io';
 import 'dart:typed_data';
-import 'jsonDiff.dart' as  jsonDiff;
+import 'jsonDiff.dart' as jsonDiff;
+
 Map<String, List<dynamic>> match(String s, List<RegExp> l) {
   List<String> result = [];
   List<dynamic> matches = [];
   for (RegExp r in l) {
     if (r.hasMatch(s)) {
       result.add(s);
-      // add only the part
-      //  type of r.stringMath(s) 
-      matches.add(r.stringMatch(s));
 
+      matches.add(r.stringMatch(s));
     }
   }
   // make a tuple of the two lists
-  var dict = {
-    "result": result,
-    "matches": matches
-  };
+  var dict = {"result": result, "matches": matches};
 
   return dict;
 }
-
 
 class MyStack {
   final String _filePath;
@@ -38,9 +32,9 @@ class MyStack {
 
     // Read the first line of the file to get the position of the last element in the stack
     String? positionString = null;
-    try{ 
+    try {
       String? positionString = File(_filePath).readAsLinesSync().first;
-    }catch(e){
+    } catch (e) {
       print('Clean file');
     }
     if (positionString != null && positionString.isNotEmpty) {
@@ -55,7 +49,8 @@ class MyStack {
     }
 
     // Write the new value to the file
-    File(_filePath).writeAsStringSync('${value.toString()}\n', mode: FileMode.append);
+    File(_filePath)
+        .writeAsStringSync('${value.toString()}\n', mode: FileMode.append);
 
     _top++;
   }
@@ -71,13 +66,14 @@ class MyStack {
     int value = int.parse(lines[_top]);
     //print(value);
 
-    // remove the last element 
+    // remove the last element
     lines.removeLast();
     File(_filePath).writeAsStringSync('', mode: FileMode.write);
     int lenghtValue = value.toString().length;
     //print(lenghtValue);
-    for(var element in lines)
-      File(_filePath).writeAsStringSync('${element.toString()}\n', mode: FileMode.append);
+    for (var element in lines)
+      File(_filePath)
+          .writeAsStringSync('${element.toString()}\n', mode: FileMode.append);
     _top--;
     return value;
   }
@@ -91,7 +87,7 @@ class MyStack {
     // Read the value of the top element from the file
     List<String> lines = File(_filePath).readAsLinesSync();
     int value = int.parse(lines[_top]);
-    
+
     return value;
   }
 
@@ -101,7 +97,6 @@ class MyStack {
 }
 
 class MathOps<T, G> {
-  
   int sub(T obj1, G obj2) {
     if (obj1 is int && obj2 is int) {
       return obj1 - obj2;
@@ -119,17 +114,15 @@ class MathOps<T, G> {
       throw new ArgumentError("The types of the arguments are not supported.");
     }
   }
-  
+
   int prod(T obj1, G obj2) {
     if (obj1 is int && obj2 is int) {
       return obj1 * obj2;
     } else if (obj1 is double && obj2 is double) {
       return (obj1 * obj2).toInt();
     } else if (obj1 is String && obj2 is String) {
-    
       dynamic val1 = int.tryParse(obj1);
       dynamic val2 = int.tryParse(obj2);
-
 
       if (val1 != null && val2 != null) {
         return val1 * val2;
@@ -140,7 +133,7 @@ class MathOps<T, G> {
       throw new ArgumentError("The types of the arguments are not supported.");
     }
   }
-  
+
   int mod(T obj1, G obj2) {
     if (obj1 is int && obj2 is int) {
       return obj1 % obj2;
@@ -156,25 +149,27 @@ class MathOps<T, G> {
           throw new ArgumentError("Both Strings must represent integers.");
         }
       } else {
-        throw new ArgumentError("The types of the arguments are not supported.");
+        throw new ArgumentError(
+            "The types of the arguments are not supported.");
       }
     }
   }
-  
 }
-void main(){
+
+void main() {
   // regex for matching a word
   RegExp r = RegExp(r"\w+");
   // regex for matching a number
   RegExp r2 = RegExp(r"\d+");
-  print(match("Hello 22 World", [RegExp(r"Hello"), RegExp(r"World"),r,r2])); // [Hello]
+  print(match("Hello 22 World",
+      [RegExp(r"Hello"), RegExp(r"World"), r, r2])); // [Hello]
 
   // 2. Implementati o Stiva folosind fisiere ca storage.
   MyStack fs = MyStack(filePath: "stack.txt");
   fs.push(1);
   fs.push(2);
   fs.push(3);
-  print(fs.peek()); // 3 
+  print(fs.peek()); // 3
   print(fs.pop()); // 3
   print(fs.pop()); // 2
   print(fs.pop()); // 1
@@ -203,7 +198,6 @@ void main(){
   print(m3.mod("1", "2")); // 1
   print(m3.mod("1", "4")); // 1
 
-  print(jsonDiff.jsonSubJson("C:\\Stuff\\Repo\\Facultate3Sem2\\TPPM\\json1.json", "C:\\Stuff\\Repo\\Facultate3Sem2\\TPPM\\json2.json"));
-
-
+  print(jsonDiff.jsonSubJson("D:\\Repo\\Facultate3Sem2\\TPPM\\json1.json",
+      "D:\\Repo\\Facultate3Sem2\\TPPM\\json2.json"));
 }
