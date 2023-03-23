@@ -9,13 +9,17 @@ except:
 try:
     import matplotlib.pyplot as plt
 except:
-    subprocess.check_call([sys.executable, "-m", "pip", "install", "matplotlib"])
+    subprocess.check_call(
+        [sys.executable, "-m", "pip", "install", "matplotlib"])
 
-def log(type, message,error = False):
+
+def log(type, message, error=False):
     if error == True:
         print("[" + type + "] "+" [ERRO] " + message)
-    else:   
+    else:
         print("[" + type + "] " + message)
+
+
 def clasic_add(a, b):
     # Verificăm dacă matricele sunt de dimensiuni adecvate pentru a fi înmulțite
     if a.shape[0] != b.shape[0]:
@@ -27,6 +31,8 @@ def clasic_add(a, b):
             for j in range(a.shape[1]):
                 c[i][j] = a[i][j] + b[i][j]
         return c
+
+
 def clasic_sub(a, b):
     # Verificăm dacă matricele sunt de dimensiuni adecvate pentru a fi înmulțite
 
@@ -39,6 +45,7 @@ def clasic_sub(a, b):
             for j in range(a.shape[1]):
                 c[i][j] = a[i][j] - b[i][j]
         return c
+
 
 def strassen_algorithm(a, b):
     """
@@ -79,20 +86,20 @@ def strassen_algorithm(a, b):
     p1 = strassen_algorithm(clasic_add(a11, a22), clasic_add(b11, b22))
     p2 = strassen_algorithm(clasic_add(a21, a22), b11)
     p3 = strassen_algorithm(a11, clasic_sub(b12, b22))
-    p4 = strassen_algorithm(a22, clasic_sub(b21,b11))
+    p4 = strassen_algorithm(a22, clasic_sub(b21, b11))
     p5 = strassen_algorithm(clasic_add(a11, a12), b22)
     p6 = strassen_algorithm(clasic_sub(a21, a11), clasic_add(b11, b12))
     p7 = strassen_algorithm(clasic_sub(a12, a22), clasic_add(b21, b22))
 
-    c11 =clasic_add( clasic_sub( clasic_add(p1, p4),p5), p7)
-    c12 =clasic_add( p3 , p5)
-    c21 = clasic_add (p2 , p4)
-    c22 = clasic_add(clasic_add(clasic_sub(p1, p2), p3) , p6)
+    c11 = clasic_add(clasic_sub(clasic_add(p1, p4), p5), p7)
+    c12 = clasic_add(p3, p5)
+    c21 = clasic_add(p2, p4)
+    c22 = clasic_add(clasic_add(clasic_sub(p1, p2), p3), p6)
     # Construim matricea C din submatricile calculare anterior
-    
+
     c = np.vstack((np.hstack((c11, c12)), np.hstack((c21, c22))))
-    #vstack - vertical stack - concateneaza matricile pe verticala
-    #hstack - horizontal stack - concateneaza matricile pe orizontala
+    # vstack - vertical stack - concateneaza matricile pe verticala
+    # hstack - horizontal stack - concateneaza matricile pe orizontala
     return c
 
 
@@ -101,29 +108,40 @@ def generate_matrix(n):
     a = np.random.randint(1, 5, (n, n))
     print(a)
     return a
+
+
 def np_multiplication(a, b):
     return np.matmul(a, b)
+
+
 def clasic_multiplication(a, b):
     for i in range(len(a)):
         for j in range(len(b[0])):
             for k in range(len(b)):
                 a[i][j] += a[i][k] * b[k][j]
 
-def funct_mul_np(a,b,result):
+
+def funct_mul_np(a, b, result):
     start = time.time()
     result[0] = np.matmul(a, b)
     end = time.time()
     result[1] = end - start
-def funct_mul_strassen(a,b,result):
+
+
+def funct_mul_strassen(a, b, result):
     start = time.time()
     result[0] = strassen_algorithm(a, b)
     end = time.time()
     result[1] = end - start
-def funct_mul_clasic(a,b,result):
+
+
+def funct_mul_clasic(a, b, result):
     start = time.time()
     clasic_multiplication(a, b)
     end = time.time()
     result[1] = end - start
+
+
 def create_graph_with_time():
     n = 32
     n_max = 1024
@@ -133,7 +151,7 @@ def create_graph_with_time():
     y1 = []
     y2 = []
     y3 = []
-    
+
     while n <= n_max:
         x.append(n)
         a = generate_matrix(n)
@@ -163,7 +181,7 @@ def create_graph_with_time():
         # end = time.time()
         y3.append(result3[1])
         n *= step
-    
+
     plt.plot(x, y1, label="Multiplication clasic")
     plt.plot(x, y2, label="Multiplication numpy")
     plt.plot(x, y3, label="Multiplication strassen")
@@ -171,11 +189,12 @@ def create_graph_with_time():
     plt.ylabel("Time")
     plt.legend()
     plt.show()
-# example
-a = np.array([[1,2,3,4],[5,6,7,8],[9,10,11,12],[13,14,15,16]])
-b = np.array([[1,2,3,4],[5,6,7,8],[9,10,11,12],[13,14,15,16]])
-c = strassen_algorithm(a,b)
 
-print(np.matmul(a,b))
+
+# example
+a = np.array([[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 16]])
+b = np.array([[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 16]])
+c = strassen_algorithm(a, b)
+
+print(np.matmul(a, b))
 print(c)
-create_graph_with_time()
