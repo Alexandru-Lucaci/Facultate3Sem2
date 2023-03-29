@@ -114,8 +114,8 @@ def citire_b(file_name):
         return b
 
 
-n, A = definire_matrice_rara(r"D:\Repo\Facultate3Sem2\CN\a_1.txt")
-b = citire_b(r"D:\Repo\Facultate3Sem2\CN\b_1.txt")
+n, A = definire_matrice_rara(r"C:\Stuff\Repo\Facultate3Sem2\CN\a_1.txt")
+b = citire_b(r"C:\Stuff\Repo\Facultate3Sem2\CN\b_1.txt")
 
 
 def get_element_from_matrix(A, i, j):
@@ -140,7 +140,7 @@ def get_element_from_matrix(A, i, j):
 
 
 # test
-print(get_element_from_matrix(A, 1, 1))
+# print(get_element_from_matrix(A, 1, 1))
 
 
 def get_epsilon(n):
@@ -168,5 +168,71 @@ def verificare_diagonala_principala(A, n):
             return False
     return True
 
+# x0 = [0 for i in range(n)]
+# print(gauss_seidel(A,b,x0,n))
+# xc = xp
+# =0;
+# k=0;
+# do
+#  {
+#  xp = xc
+# ;
+#  calculează noul xc folosind xp (cu formula (3));
+#  calculează ∆x = || xc - xp
+# ||;
+#  k=k+1;
+#  }
+# while (∆x ≥ ε şi k ≤ kmax şi ∆x ≤ 108) //(kmax = 10000)
+# if (∆x < ε) xc
+# ≈ x*
+# ; // xc este aproximarea căutată a soluției
+# else ‚divergență’;
 
-# print(verificare_diagonala_principala(A, n))
+
+def gauss_seidel(A, b, n,x0=[0 for _ in range(n)], eps=1e-7, kmax=10000):
+    xc = x0
+    k = 0
+    delta_x = eps + 1
+    while delta_x >= eps and k < kmax and delta_x <= 1e8:
+        print('iteration', k)
+        delta_x = 0
+        for i in range(n):
+            print('i', i)
+            xp = xc[i]
+            s = sum(get_element_from_matrix(A,i,j) * xc[j] for j in range(n) if j != i)
+            xc[i] = (b[i] - s) / get_element_from_matrix(A, i, i)
+            delta_x = max(delta_x, abs(xc[i] - xp))
+        k += 1
+    if delta_x < eps:
+        log(f"Convergena la {k} iteratii", "gauss_seidel")
+        log(f"The approximate solution is {xc}", "gauss_seidel")
+        with open(r"C:\Stuff\Repo\Facultate3Sem2\CN\output.txt", "w") as f:
+            f.write(f"xc = {xc}")
+        return xc
+    else:
+        log("Divergenta", "gauss_seidel", error=True)
+        return None
+# gauss_seidel(A,b,n)
+
+x0 = [1.0,2.0,3.0,4.0,5.0]
+b= [6.0,7.0,8.0,9.0,1.0]
+n,A = definire_matrice_rara(r"C:\Stuff\Repo\Facultate3Sem2\CN\exercitiu.txt")
+print(A)
+rezz = gauss_seidel(A,b,5,x0)
+def generate_0_array(n):
+    return np.array([0 for _ in range(n)])
+def norma(A,x,result,n):
+    x = np.array(x)
+    b = generate_0_array(n)
+    # calculez Ax
+    for i in range (n):
+        suma =0
+        for j in range(n):
+            suma += get_element_from_matrix(A,i,j)*x[j]
+            
+        b[i] = suma
+    # calculez result - Ax
+    res = np.subtract(result,b)
+    return np.linalg.norm(res,np.inf)
+
+print(norma(A,rezz,b,5))
