@@ -349,3 +349,41 @@ def generateRandomMatrixAndB(n):
 a,b = generateRandomMatrixAndB(3)
 
 print(calcul_norma(a,b))
+
+
+def log(message: str, place: str, warning: bool = False, error: bool = False) -> str:
+    """
+    Print a message in the console with a specific format.
+
+    Args:
+        message (str): the string to be printed
+        place (str): the place where the message is printed
+        warning (bool, optional): Print [warning] in front of the text. Defaults to False.
+        error (bool, optional): Print [Error] in front of the tex. Defaults to False.
+
+    Returns:
+        str: Final text with the format
+    """
+    if error:
+        print(f"[Error][{place}]: {message}")
+
+    else:
+        if warning:
+            print(f"[Warning][{place}]: {message}")
+        else:
+            print(f"[{place}]: {message}")
+
+
+def bonus(A, k=0):
+    Ak = A.copy()
+    
+    log(f"A \n {Ak} ",f"bonus {k} ")
+    # calculez QR
+    Q,_ = HouseholderAlg(A,[0]*A.shape[0])
+    log(f"Q  \n {Q}",f"bonus {k}")
+    log(f"R \n {A}",f"bonus {k} ")
+
+
+A = np.array([[0,0,4],[1,2,3],[0,1,2]])
+s = np.array([4,10,4])
+bonus(A)
