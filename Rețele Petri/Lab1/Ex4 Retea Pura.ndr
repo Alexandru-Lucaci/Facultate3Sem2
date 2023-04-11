@@ -1,0 +1,24 @@
+p 120.0 50.0 P1_Idle 1 n
+p 120.0 250.0 P1_CS 0 n
+p 405.0 55.0 P2_Idle 1 n
+p 410.0 255.0 P2_CS 0 n
+t 120.0 145.0 t0 0 w n
+t 405.0 145.0 t2 0 w n
+t 540.0 150.0 t3 0 w n
+t 25.0 145.0 t1 0 w n
+p 265.0 145.0 AC_Point 1 n
+e t3 0.6801210488 272.8827587 AC_Point 0.7519893332 80.00624976 1 n
+e AC_Point t2 1 n
+e t3 P2_Idle 1 n
+e P2_CS t3 1 n
+e t2 P2_CS 1 n
+e P2_Idle t2 1 n
+e t1 0.8076280008 211.7285999 AC_Point 0.6877889806 196.8476568 1 n
+e t1 P1_Idle 1 n
+e P1_CS t1 1 n
+e AC_Point t0 1 n
+e t0 P1_CS 1 n
+e P1_Idle t0 1 n
+h {Ex Retea Pura}
+
+

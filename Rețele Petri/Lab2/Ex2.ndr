@@ -1,0 +1,35 @@
+p 165.0 360.0 R1 1 n
+p 285.0 360.0 R2 1 n
+p 55.0 510.0 P1_Idle 1 n
+t 100.0 425.0 T1 0 w n
+t 270.0 435.0 T2 0 w n
+p 185.0 510.0 T1_Done 0 n
+p 320.0 520.0 T2_Done 0 n
+t 410.0 440.0 P1Finish 0 w n
+t 245.0 120.0 T4 0 w n
+p 30.0 195.0 P2_Idle 1 n
+t 75.0 110.0 T3 0 w n
+t 385.0 125.0 P2Finish 0 w n
+p 310.0 50.0 T4_Done 0 n
+p 150.0 50.0 T3_Done 0 n
+e P2Finish R1 1 n
+e R1 T3 1 n
+e P2_Idle T3 1 n
+e T3_Done T4 1 n
+e T3 T3_Done 1 n
+e T4 T4_Done 1 n
+e T4_Done P2Finish 1 n
+e P2Finish 0.7059668662 168.4042756 P2_Idle 0.8662046487 166.4241569 1 n
+e P1Finish 0.7059668662 168.4042756 P1_Idle 0.8662046506 166.4241568 1 n
+e P1Finish R1 1 n
+e P1Finish R2 1 n
+e T2_Done P1Finish 1 n
+e T2 T2_Done 1 n
+e R1 T2 1 n
+e R2 T1 1 n
+e T1 T1_Done 1 n
+e T1_Done T2 1 n
+e P1_Idle T1 1 n
+h Ex2
+
+

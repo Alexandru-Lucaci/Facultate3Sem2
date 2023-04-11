@@ -1,0 +1,30 @@
+Struct version 3.7.0 -- 06/05/22 -- LAAS/CNRS
+
+parsed net buffer
+
+6 places, 4 transitions, 12 arcs
+
+net buffer
+tr t0 P1_SC  -> P1_Idle acc2 
+tr t1 P1_Idle acc1  -> P1_SC 
+tr t2 P2_Idle acc2  -> P2_SC 
+tr t3 P2_SC  -> P2_Idle acc1 
+pl P1_Idle (1)
+pl P2_Idle (1)
+pl acc1 (1)
+
+0.000s
+
+P-SEMI-FLOWS GENERATING SET ------------------------------------- 
+
+P1_SC P2_SC acc1 acc2 (1)
+P2_Idle P2_SC (1)
+P1_Idle P1_SC (1)
+
+invariant
+
+0.000s
+
+ANALYSIS COMPLETED  --------------------------------------------- 
+
+

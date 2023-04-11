@@ -1,0 +1,45 @@
+p 170.0 150.0 P1_idle 1 n
+p 175.0 340.0 P1_SC 0 n
+t 170.0 230.0 t0 0 w n
+t 80.0 235.0 t1 0 w n
+p 525.0 135.0 P2_idle 1 n
+t 505.0 230.0 t2 0 w n
+t 630.0 225.0 t3 0 w n
+p 510.0 340.0 P2_SC 0 n
+p 350.0 225.0 ACC1 1 n
+p 345.0 115.0 ACC2 0 n
+p 980.0 245.0 Coins 0 n
+t 985.0 130.0 t4 0 w n
+t 890.0 250.0 t5 0 w n
+t 1090.0 240.0 t6 0 w n
+p 1135.0 130.0 Wait 0 n
+p 875.0 130.0 Idle 0 n
+p 815.0 355.0 Latch_Open 0 n
+t 890.0 335.0 t7 0 w n
+t 775.0 70.0 t9 0 w n
+e t6 0.7065493154 77.88452991 Latch_Open 0.9666347823 96.10411021 1 n
+e Coins t7 1 n
+e t9 Latch_Open 1 n
+e Wait t9 1 n
+e t7 Coins 1 n
+e Latch_Open t7 1 n
+e t6 Wait 1 n
+e Coins t6 3 n
+e t4 Wait 1 n
+e Idle t4 1 n
+e t5 Coins 1 n
+e t1 0.3034357199 203.3543705 ACC2 0.3421625324 124.2577965 1 n
+e ACC2 t2 1 n
+e t3 P2_idle 1 n
+e P2_SC t3 1 n
+e t2 P2_SC 1 n
+e P2_idle t2 1 n
+e t3 0.7278621933 252.4381112 ACC1 0.7731595679 117.239072 1 n
+e ACC1 t0 1 n
+e t1 P1_idle 1 n
+e P1_SC t1 1 n
+e t0 P1_SC 1 n
+e P1_idle t0 1 n
+h p1RPA
+
+

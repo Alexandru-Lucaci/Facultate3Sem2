@@ -1,0 +1,30 @@
+Struct version 3.7.0 -- 06/05/22 -- LAAS/CNRS
+
+parsed net Ex1Sol
+
+5 places, 4 transitions, 12 arcs
+
+net Ex1Sol
+tr end_t1 t1_running  -> contor_t1 operatori_idle 
+tr end_t2 t2_running  -> contor_t2 operatori_idle 
+tr start_t1 contor_t1 operatori_idle  -> t1_running 
+tr start_t2 contor_t2 operatori_idle  -> t2_running 
+pl contor_t1 (4)
+pl contor_t2 (6)
+pl operatori_idle (10)
+
+0.000s
+
+P-SEMI-FLOWS GENERATING SET ------------------------------------- 
+
+operatori_idle t1_running t2_running (10)
+contor_t2 t2_running (6)
+contor_t1 t1_running (4)
+
+invariant
+
+0.000s
+
+ANALYSIS COMPLETED  --------------------------------------------- 
+
+

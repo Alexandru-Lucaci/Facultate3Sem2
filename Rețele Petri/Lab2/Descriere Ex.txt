@@ -1,0 +1,13 @@
+1)Adaugati un numar minim de tranzitii si locatii la reteaua Petri anterioara astfel incat cine foloseste automatul sa poata 
+alege intre 2 produse.
+
+2)
+
+3) Graful de accesibilitate pentru reteaua de la Ex 2
+
+4) Graful de acoperire pentru reteaua de la ex 4
+
+5) Graful de acoperire pentru reteaua de la ex 5
+
+Ex tema:
+Graf de acoperire pentru reteaua de la tema.

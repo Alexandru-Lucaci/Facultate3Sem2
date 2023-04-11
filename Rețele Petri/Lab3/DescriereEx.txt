@@ -1,0 +1,22 @@
+1)Cum limitam B de la ex anterior la o valoare maxima?
+
+2)
+a)matricea de adiacenta
+b) P invarianti,P invariant minimal
+c) alea 3 accesibile?
+
+3)Sa se arate ca reteau nu este(structural) viabila folosind doar invarianti.
+
+4)Pentru reteaua de la ex4:
+i)Stabiliti P-invarianti minimali si propietatile oferite de acestia
+ii)M(Sr)=1 sau M(Rd)=1 => M(B)=0 si M(C)=0
+iii)M(Sr)=1 => M(Rr)=1
+iv)Daca R nu a trimis confirmarea,S nu poate trimite un nou mesaj
+Cum se traduce intr-o propozitie logica?
+v)Demonstratie ca nu exista blocaj
+
+5)Pentru reteaua din laboratoarele anterioare cu simulare mutex cu fairness,demonstrati urmatoarele propietati:
+P1:Cele 2 procese nu pot fi in SC simultan
+P2:Fiecare proces poate fi fie in Idle fie in SC la un moment dat
+P3:Nu exista blocaj
+

@@ -1,0 +1,23 @@
+p 230.0 200.0 Coins 0 n
+t 235.0 85.0 t4 0 w n
+t 140.0 205.0 t5 0 w n
+t 340.0 195.0 t6 0 w n
+p 385.0 85.0 Wait 0 n
+p 125.0 85.0 Idle 0 n
+p 65.0 310.0 Latch_Open 0 n
+t 140.0 290.0 t7 0 w n
+t 25.0 25.0 t9 0 w n
+e t6 0.7065493154 77.88452991 Latch_Open 0.9666347823 96.10411021 1 n
+e Coins t7 1 n
+e t9 Latch_Open 1 n
+e Wait t9 1 n
+e t7 Coins 1 n
+e Latch_Open t7 1 n
+e t6 Wait 1 n
+e Coins t6 3 n
+e t4 Wait 1 n
+e Idle t4 1 n
+e t5 Coins 1 n
+h p2
+
+

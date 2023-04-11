@@ -1,0 +1,20 @@
+t 520.0 45.0 AddC 0 w n
+p 275.0 50.0 Wait 0 n
+t 145.0 50.0 t0 0 w n
+p 30.0 50.0 Idle 1 n
+t 265.0 290.0 t2 0 w n
+p 400.0 180.0 Cost 3 n
+p 515.0 290.0 Coins 0 n
+e t2 Idle 1 n
+e Wait t2 1 n
+e t2 Cost 3 n
+e Coins t2 3 n
+e AddC Coins 1 n
+e Cost AddC 1 n
+e Wait AddC 1 n
+e AddC Wait 1 n
+e t0 Wait 1 n
+e Idle t0 1 n
+h {Ex6 Retea}
+
+

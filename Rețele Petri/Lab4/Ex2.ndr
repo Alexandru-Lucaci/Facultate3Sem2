@@ -1,0 +1,28 @@
+p 280.0 390.0 C 0 n
+t 690.0 245.0 Back 0 w n
+p 595.0 465.0 Working 0 n
+t 735.0 470.0 Termina 0 w n
+p 460.0 350.0 Ready 1 n
+t 370.0 375.0 Go_Idle 0 w n
+t 145.0 390.0 Depune 0 w n
+p 860.0 235.0 Idle 0 n
+t 465.0 470.0 Preia_Cerere 0 w n
+p 280.0 485.0 Liber 1 n
+p 40.0 390.0 Persoane 10 n
+e Back 0.9431276941 408.825146 Liber 0.8647461501 395.3858875 1 n
+e Go_Idle 0.2219513767 370.7424982 Idle 0.2384975388 221.5784286 1 n
+e Ready Go_Idle 1 n
+e Liber Go_Idle 1 n
+e Termina 0.625 147.0782105 Liber 0.9118628997 154.0194793 1 n
+e Back 0.4548327656 99.99999983 Ready 0.1987918088 91.70605214 1 n
+e Idle Back 1 n
+e Termina 0.3670488748 113.2784181 Ready 0.1198120032 130.1768028 1 n
+e Working Termina 1 n
+e Preia_Cerere Working 1 n
+e C Preia_Cerere 1 n
+e Ready Preia_Cerere 1 n
+e Depune C 1 n
+e Persoane Depune 1 n
+h Ex2
+
+

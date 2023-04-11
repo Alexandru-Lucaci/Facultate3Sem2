@@ -1,0 +1,8 @@
+4)Avem 2 procese P1 si P2 fiecare avand o stare idle.La un moment dat,una va incerca sa acceseze sectiunea critica SC.
+Permitem accesul in SC a cel mult un proces.Reprezentatile ca 2 Retele Petri,una pura si una impura.
+
+5)Faceti astfel incat sa alterneze intre accesul fiecarui proces P1 si P2 la sectiunea critica.
+
+6)Avem un automat in starea idle.Acesta astepata o comanda de alegere a produsului(putem alege doar 1 produs) ,dupa care va astepta pana cand sunt 
+introduse 3 monede(trebuie sa permita introducerea la doar 3 monede).Odata ce au fost introduse 3 monede,acesta va furniza produsul si va reveni
+in starea idle.

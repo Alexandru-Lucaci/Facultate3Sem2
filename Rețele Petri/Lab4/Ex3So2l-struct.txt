@@ -1,0 +1,33 @@
+Struct version 3.7.0 -- 06/05/22 -- LAAS/CNRS
+
+parsed net Ex3So2l
+
+9 places, 6 transitions, 20 arcs
+
+net Ex3So2l
+tr get_confirm C S_wait  -> S_ready max_return*4 
+tr get_message B*5 R_ready  -> R_done 
+tr get_ready S_done max_return  -> S_ready 
+tr send_bit S_ready  -> B S_done contor 
+tr send_confirm R_done  -> C R_ready 
+tr wait_for_conf S_done contor*5  -> S_wait 
+pl R_ready (1)
+pl S_ready (1)
+pl max_return (4)
+
+0.000s
+
+P-SEMI-FLOWS GENERATING SET ------------------------------------- 
+
+S_ready S_wait*5 contor max_return (5)
+B C*5 R_done*5 S_ready max_return (5)
+S_done S_ready S_wait (1)
+R_done R_ready (1)
+
+invariant
+
+0.000s
+
+ANALYSIS COMPLETED  --------------------------------------------- 
+
+

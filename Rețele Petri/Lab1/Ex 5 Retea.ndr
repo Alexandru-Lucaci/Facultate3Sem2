@@ -1,0 +1,32 @@
+p 130.0 85.0 P1_Idle 1 n
+p 130.0 300.0 P1_CS 0 n
+p 720.0 85.0 P2_Idle 1 n
+p 720.0 300.0 P2_CS 0 n
+p 600.0 190.0 P2_Count 0 n
+t 130.0 190.0 t0 0 w n
+t 25.0 190.0 t1 0 w n
+t 865.0 190.0 t3 0 w n
+t 720.0 190.0 t2 0 w n
+t 515.0 190.0 t5 0 w n
+p 425.0 190.0 RandomChooser 1 n
+t 335.0 190.0 t4 0 w n
+p 255.0 190.0 P1_Count 0 n
+e P2_Count 0.2671905999 166.9730517 t0 0.1799088019 192.3538406 1 n
+e P1_Count 0.187424054 190.53871 t2 0.298867846 172.0465053 1 n
+e t3 0.7449223104 94.04786016 P2_Count 0.7865904262 289.6204413 1 n
+e t1 0.7604345904 198.4263087 P1_Count 0.7072881909 207.4246851 1 n
+e t5 P2_Count 1 n
+e RandomChooser t5 1 n
+e t4 P1_Count 1 n
+e RandomChooser t4 1 n
+e t3 P2_Idle 1 n
+e P2_CS t3 1 n
+e t2 P2_CS 1 n
+e P2_Idle t2 1 n
+e t1 P1_Idle 1 n
+e P1_CS t1 1 n
+e t0 P1_CS 1 n
+e P1_Idle t0 1 n
+h {Ex 5 Retea}
+
+

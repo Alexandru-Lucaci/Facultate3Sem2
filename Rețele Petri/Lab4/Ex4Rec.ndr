@@ -1,0 +1,24 @@
+p 645.0 50.0 MaxT1 4 n
+t 555.0 175.0 IncepeT1 s 0 w n {} ne
+p 650.0 175.0 ProceseT1 0 n
+t 740.0 175.0 IncheieT1 s 0 w n {} ne
+p 140.0 190.0 ProceseT2 0 n
+t 40.0 190.0 IncheieT2 s 0 w n {} ne
+p 400.0 280.0 Operatori 10 n
+t 245.0 190.0 IncepeT2 s 0 w n {} ne
+p 140.0 55.0 MaxT2 6 n
+e IncheieT1 Operatori 1 n
+e IncheieT2 Operatori 1 n
+e IncheieT2 MaxT2 1 n
+e ProceseT2 IncheieT2 1 n
+e IncepeT2 ProceseT2 1 n
+e MaxT2 IncepeT2 1 n
+e Operatori IncepeT2 1 n
+e Operatori IncepeT1 1 n
+e ProceseT1 IncheieT1 1 n
+e IncheieT1 MaxT1 1 n
+e IncepeT1 ProceseT1 1 n
+e MaxT1 IncepeT1 1 n
+h Ex4Rec
+
+

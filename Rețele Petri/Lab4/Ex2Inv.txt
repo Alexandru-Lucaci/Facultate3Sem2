@@ -1,0 +1,30 @@
+Struct version 3.7.0 -- 06/05/22 -- LAAS/CNRS
+
+parsed net buffer
+
+6 places, 5 transitions, 15 arcs
+
+net buffer
+tr brk {C-comp}*10 R  -> {C-comp}*10 I 
+tr done W  -> R 
+tr put {C-comp} P  -> C 
+tr ret I  -> R 
+tr take C R  -> {C-comp} W 
+pl {C-comp} (10)
+pl P (10)
+pl R (1)
+
+0.000s
+
+P-SEMI-FLOWS GENERATING SET ------------------------------------- 
+
+I R W (1)
+C {C-comp} (10)
+
+not invariant
+
+0.000s
+
+ANALYSIS COMPLETED  --------------------------------------------- 
+
+

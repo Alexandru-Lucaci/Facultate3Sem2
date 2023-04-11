@@ -1,0 +1,53 @@
+p 30.0 160.0 i 1 n
+p 195.0 100.0 p1 0 n
+p 195.0 205.0 p2 0 n
+t 320.0 95.0 VG 0 w n
+p 460.0 95.0 p3 0 n
+t 575.0 50.0 RC1 0 w n
+t 570.0 155.0 ROK 0 w n
+p 695.0 50.0 p5 0 n
+p 570.0 235.0 p6 0 n
+p 570.0 340.0 p4 0 n
+t 120.0 160.0 PC 0 w n
+t 835.0 240.0 TR 0 w n
+t 830.0 350.0 CSC 0 w n
+p 1035.0 360.0 p8 0 n
+p 1045.0 550.0 p9 0 n
+t 1040.0 455.0 AR 0 w n
+t 1155.0 555.0 AC 0 w n
+p 1310.0 555.0 o 0 n
+t 835.0 545.0 RSC 0 w n
+t 1160.0 645.0 RC 0 w n
+t 705.0 795.0 {t*} 0 w n
+t 330.0 340.0 IC 0 w n
+e RSC p4 1 n
+e {t*} i 1 n
+e o 0.7416676241 229.3141949 {t*} 0.9439570966 229.0545786 1 n
+e RSC p6 1 n
+e RC o 1 n
+e p9 RC 1 n
+e TR 0.00930576777 205.3509192 o 0.2802042233 180.2359565 1 n
+e p9 RSC 1 n
+e AC o 1 n
+e p9 AC 1 n
+e AR p9 1 n
+e p8 AR 1 n
+e CSC p8 1 n
+e p4 CSC 1 n
+e p6 CSC 1 n
+e p4 TR 1 n
+e IC p4 1 n
+e p5 TR 1 n
+e ROK p6 1 n
+e RC1 p5 1 n
+e p3 ROK 1 n
+e p3 RC1 1 n
+e VG p3 1 n
+e p2 IC 1 n
+e p1 VG 1 n
+e PC p2 1 n
+e PC p1 1 n
+e i PC 1 n
+h Ex1CuT
+
+

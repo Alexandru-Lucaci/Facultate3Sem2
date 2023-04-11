@@ -1,0 +1,41 @@
+t 80.0 170.0 wait_for_conf n 0 w n {} ne
+p 75.0 555.0 max_bit_complement 0 s
+p 205.0 180.0 S_done 0 n
+p 520.0 550.0 buffer_bit 0 s
+p 515.0 365.0 max_bits 5 n
+t 735.0 50.0 get_confirm n 0 w n {} ne
+p 730.0 170.0 confirm_buffer 0 n
+t 630.0 545.0 get_message s 0 w n {} ne
+p 715.0 470.0 R_ready 1 n
+p 710.0 625.0 R_done 0 n
+t 805.0 550.0 send_confirm s 0 w n {} ne
+t 335.0 180.0 get_ready n 0 w n {} ne
+p 515.0 180.0 max_return 4 n
+p 335.0 365.0 S_ready 1 n
+t 335.0 555.0 send_bit s 0 w n {} ne
+p 80.0 50.0 S_wait 0 n
+e S_wait get_confirm 1 n
+e wait_for_conf S_wait 1 n
+e S_done wait_for_conf 1 n
+e max_bit_complement wait_for_conf 5 n
+e send_bit max_bit_complement 1 n
+e send_bit buffer_bit 1 n
+e buffer_bit get_message 5 n
+e R_ready get_message 1 n
+e get_message R_done 1 n
+e R_done send_confirm 1 n
+e send_confirm R_ready 1 n
+e send_confirm confirm_buffer 1 n
+e confirm_buffer get_confirm 1 n
+e get_confirm max_bits 5 n
+e get_confirm max_return 4 n
+e get_confirm S_ready 1 n
+e max_bits send_bit 1 n
+e send_bit S_done 1 n
+e max_return get_ready 1 n
+e S_done get_ready 1 n
+e get_ready S_ready 1 n
+e S_ready send_bit 1 n
+h Ex3Sol
+
+

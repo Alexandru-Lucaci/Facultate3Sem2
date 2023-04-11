@@ -1,0 +1,41 @@
+t 145.0 330.0 check_ready 0 w n
+p 145.0 90.0 S_ready 1 n
+t 305.0 90.0 trimite_bit 0 w n
+p 305.0 330.0 S_Done 0 n
+t 430.0 205.0 check_finished 0 w n
+p 435.0 90.0 B 0 n
+p 220.0 230.0 BitToSend 5 n
+p 910.0 100.0 R_ready 1 n
+t 795.0 160.0 preia_mesaj 0 w n
+p 920.0 255.0 R_done 0 n
+t 920.0 160.0 Confirm_to_S 0 w n
+t 725.0 50.0 trimite_confirmare 0 w n
+p 1045.0 160.0 C 0 n
+p 555.0 50.0 S_waiting 0 n
+e preia_mesaj 0.2966621439 55.36244214 S_waiting 0.9606792075 233.0772404 1 n
+e S_waiting 0.971784114 243.8216561 preia_mesaj 0.25 67.0 1 n
+e trimite_confirmare 0.7549622883 513.249452 S_ready 0.7038409463 468.5690984 1 n
+e S_waiting trimite_confirmare 1 n
+e C 0.2470800534 109.0183471 trimite_confirmare 0.9995026424 320.0015625 1 n
+e Confirm_to_S R_ready 1 n
+e Confirm_to_S C 1 n
+e R_done Confirm_to_S 1 n
+e preia_mesaj R_done 1 n
+e B preia_mesaj 5 n
+e R_ready preia_mesaj 1 n
+e check_finished B 5 n
+e check_finished BitToSend 5 n
+e check_ready S_ready 1 n
+e check_ready BitToSend 1 n
+e S_Done check_ready 1 n
+e BitToSend 0.5202937765 39.3192065 check_ready 0.1747345764 48.3011387 1 n
+e check_finished S_waiting 1 n
+e S_Done check_finished 1 n
+e BitToSend trimite_bit 1 n
+e B 0.6987918088 47.4341649 check_finished 0.3704539527 49.51767361 5 n
+e trimite_bit S_Done 1 n
+e trimite_bit B 1 n
+e S_ready trimite_bit 1 n
+h lab4ex3
+
+

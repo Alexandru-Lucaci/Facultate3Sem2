@@ -1,0 +1,50 @@
+p 40.0 85.0 P1activ 1 n
+p 815.0 285.0 P2Inactiv 0 n
+p 850.0 80.0 P2Activ 1 n
+p 445.0 330.0 maxProd 10 n
+t 820.0 180.0 getActive2 0 w n
+p 40.0 320.0 P1Inactiv 0 n
+t 40.0 195.0 getActive1 0 w n
+t 190.0 85.0 Prod n 0 w n {} ne
+p 370.0 50.0 p1Turn 1 n
+p 455.0 440.0 buffer 0 n
+p 515.0 50.0 P2Turn 0 n
+t 650.0 75.0 ProdP2 n 0 w n {} ne
+t 455.0 510.0 getProd 0 w n
+p 455.0 580.0 CActiv 1 n
+p 640.0 510.0 Cworking 0 n
+t 640.0 580.0 getActiv 0 w n
+t 225.0 490.0 getDone 0 w n
+t 295.0 580.0 getActiv2 e 0 w n {} ne
+p 225.0 580.0 CDone 0 n
+e getDone CDone 1 n
+e getDone 0.02148221693 81.74350127 maxProd 0.6791734681 72.01388755 10 n
+e maxProd 0.5684632524 93.52005133 getDone 0.1639895652 75.80237463 10 n
+e CActiv getDone 1 n
+e getActiv2 CActiv 1 n
+e CDone getActiv2 1 n
+e getActiv CActiv 1 n
+e Cworking getActiv 1 n
+e getProd 0.5010681379 149.0033557 maxProd 0.4988383057 137.0036496 1 n
+e getProd Cworking 1 n
+e CActiv getProd 1 n
+e buffer getProd 1 n
+e getActive2 P2Activ 1 n
+e ProdP2 0.75 366.0 buffer 0.999183828 195.0025641 1 n
+e P2Inactiv getActive2 1 n
+e ProdP2 0.561877494 89.69392399 p1Turn 0.8763839225 81.32035417 1 n
+e maxProd ProdP2 1 n
+e ProdP2 P2Inactiv 1 n
+e P2Turn ProdP2 1 n
+e P2Activ ProdP2 1 n
+e Prod 0.9725949807 326.8332908 P2Turn 0.7447550333 91.04943712 1 n
+e getActive1 P1activ 1 n
+e P1Inactiv getActive1 1 n
+e maxProd Prod 1 n
+e Prod P1Inactiv 1 n
+e Prod 0.7509042817 352.0056818 buffer 0.4993994182 265.0018868 1 n
+e p1Turn Prod 1 n
+e P1activ Prod 1 n
+h model
+
+

@@ -1,0 +1,38 @@
+t 50.0 170.0 wait_for_conf n 0 w n {} ne
+p 45.0 555.0 contor 0 s
+p 175.0 180.0 S_done 0 n
+p 490.0 550.0 B 0 s
+t 705.0 50.0 get_confirm n 0 w n {} ne
+t 600.0 545.0 get_message s 0 w n {} ne
+p 685.0 470.0 R_ready 1 n
+p 680.0 625.0 R_done 0 n
+t 775.0 550.0 send_confirm s 0 w n {} ne
+t 305.0 180.0 get_ready n 0 w n {} ne
+p 485.0 180.0 max_return 4 n
+p 305.0 365.0 S_ready 1 n
+t 305.0 555.0 send_bit s 0 w n {} ne
+p 50.0 50.0 S_wait 0 n
+p 700.0 170.0 C 0 n
+e S_wait get_confirm 1 n
+e wait_for_conf S_wait 1 n
+e S_done wait_for_conf 1 n
+e contor wait_for_conf 5 n
+e send_bit contor 1 n
+e send_bit B 1 n
+e B get_message 5 n
+e R_ready get_message 1 n
+e get_message R_done 1 n
+e R_done send_confirm 1 n
+e send_confirm R_ready 1 n
+e send_confirm C 1 n
+e C get_confirm 1 n
+e get_confirm max_return 4 n
+e get_confirm S_ready 1 n
+e send_bit S_done 1 n
+e max_return get_ready 1 n
+e S_done get_ready 1 n
+e get_ready S_ready 1 n
+e S_ready send_bit 1 n
+h Ex3So2l
+
+

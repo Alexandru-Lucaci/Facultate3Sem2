@@ -1,0 +1,23 @@
+
+state 0
+props i
+trans PC/1
+
+state 1
+props p1 p2
+trans IC/2 VG/3
+
+state 2
+props p1 p4
+trans VG/4
+
+state 3
+props p2 p3
+trans IC/4 RC1/5 ROK/6
+
+state 4
+props p3 p4
+trans RC1/7 ROK/8
+
+
+

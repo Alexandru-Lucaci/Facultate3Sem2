@@ -1,0 +1,23 @@
+p 105.0 50.0 P1_Idle 1 n
+p 100.0 270.0 P1_CS 0 n
+t 100.0 155.0 t0 0 w n
+t 25.0 150.0 t1 0 w n
+p 380.0 50.0 P2_Idle 1 n
+p 380.0 270.0 P2_CS 0 n
+t 380.0 160.0 t2 0 w n
+t 480.0 155.0 t3 0 w n
+e P2_Idle t0 1 n
+e t0 P2_Idle 1 n
+e t2 P1_Idle 1 n
+e P1_Idle t2 1 n
+e t3 P2_Idle 1 n
+e P2_CS t3 1 n
+e t2 P2_CS 1 n
+e P2_Idle t2 1 n
+e t1 P1_Idle 1 n
+e P1_CS t1 1 n
+e t0 P1_CS 1 n
+e P1_Idle t0 1 n
+h {Ex4 Retea Impura}
+
+

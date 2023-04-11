@@ -1,0 +1,29 @@
+p 35.0 50.0 P 10 n
+t 30.0 165.0 depune 0 w n
+p 330.0 110.0 W 0 n
+p 330.0 225.0 R 1 n
+p 330.0 355.0 I 0 n
+p 110.0 125.0 C 0 n
+t 200.0 180.0 Preia_cerere 0 w n
+p 150.0 255.0 {C-aux} 10 n
+t 435.0 165.0 termina 0 w n
+t 285.0 285.0 pauza 0 w n
+t 385.0 280.0 ready 0 w n
+e ready R 1 n
+e I ready 1 n
+e pauza I 1 n
+e {C-aux} 0.06157318283 58.30951895 pauza 0.4750760373 39.99999998 10 n
+e pauza 0.6055097174 92.61749295 {C-aux} 0.9750760373 39.99999998 10 n
+e R pauza 1 n
+e termina R 1 n
+e W termina 1 n
+e Preia_cerere W 1 n
+e Preia_cerere {C-aux} 1 n
+e {C-aux} depune 1 n
+e C Preia_cerere 1 n
+e R Preia_cerere 1 n
+e depune C 1 n
+e P depune 1 n
+h Lab4ex1
+
+

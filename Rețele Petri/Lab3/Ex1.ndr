@@ -1,0 +1,22 @@
+p 35.0 145.0 P_Idle 1 n
+p 300.0 140.0 P_Done 0 n
+t 165.0 140.0 t0 0 w n
+t 155.0 25.0 t1 0 w n
+p 35.0 290.0 C_Done 0 n
+t 130.0 300.0 t2 0 w n
+p 205.0 390.0 C_Idle 1 n
+t 90.0 375.0 t3 0 w n
+p 310.0 295.0 B 0 n
+e C_Idle t2 1 n
+e t3 C_Idle 1 n
+e C_Done t3 1 n
+e t2 C_Done 1 n
+e B t2 2 n
+e t1 P_Idle 1 n
+e P_Done t1 1 n
+e t0 P_Done 1 n
+e t0 B 1 n
+e P_Idle t0 1 n
+h Ex5
+
+

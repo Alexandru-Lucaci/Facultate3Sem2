@@ -1,0 +1,36 @@
+Struct version 3.7.0 -- 06/05/22 -- LAAS/CNRS
+
+parsed net Ex4
+
+11 places, 7 transitions, 22 arcs
+
+net Ex4
+tr preia P3r m2  -> P3d 
+tr t3 P3d  -> P3r c2 
+tr t4 P2w c2  -> P2_done_conf 
+tr t5 P2_done_conf  -> P2r c1 
+tr t6 P1w c1  -> P1r 
+tr trimiteP2 P1r  -> P1w m1 
+tr trimiteP3 P2r m1  -> P2w m2 
+pl P1r (1)
+pl P2r (1)
+pl P3r (1)
+
+0.000s
+
+P-SEMI-FLOWS GENERATING SET ------------------------------------- 
+
+P1r P2_done_conf P3d c1 c2 m1 m2 (1)
+P2_done_conf P2r P3d c2 m2 (1)
+P1r P2_done_conf P2w c1 m1 (1)
+P3d P3r (1)
+P2_done_conf P2r P2w (1)
+P1r P1w (1)
+
+invariant
+
+0.000s
+
+ANALYSIS COMPLETED  --------------------------------------------- 
+
+

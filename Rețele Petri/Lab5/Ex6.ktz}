@@ -1,0 +1,15 @@
+
+state 0
+props p1
+trans r1/1
+
+state 1
+props i*w p1 p2*w
+trans r1/1 r2/2
+
+state 2
+props i*w p2*w p3
+trans
+
+
+

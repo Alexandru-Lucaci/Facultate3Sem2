@@ -1,0 +1,24 @@
+p 40.0 240.0 contor_t2 6 n
+p 270.0 235.0 t2_running 0 n
+p 550.0 230.0 t1_running 0 n
+p 770.0 230.0 contor_t1 4 n
+p 415.0 385.0 operatori_idle 10 n
+t 275.0 380.0 start_t2 s 0 w n {} ne
+t 555.0 385.0 start_t1 s 0 w n {} ne
+t 545.0 50.0 end_t1 n 0 w n {} ne
+t 270.0 55.0 end_t2 n 0 w n {} ne
+e end_t1 operatori_idle 1 n
+e end_t1 contor_t1 1 n
+e t1_running end_t1 1 n
+e start_t1 t1_running 1 n
+e contor_t1 start_t1 1 n
+e operatori_idle start_t1 1 n
+e end_t2 operatori_idle 1 n
+e end_t2 contor_t2 1 n
+e t2_running end_t2 1 n
+e start_t2 t2_running 1 n
+e contor_t2 start_t2 1 n
+e operatori_idle start_t2 1 n
+h Ex1Sol
+
+

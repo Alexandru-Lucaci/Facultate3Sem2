@@ -1,0 +1,19 @@
+1)Intr-un sistem exista 10 operatori care se afla in starea idle.Orice operator poate executa 2 task-uri ,T1 sau T2.Numarul maxim de operatori 
+care pot executa simultan task-ul T1 este 4,iar numarul maxim de operatori care pot executa simultan T2 este 6.Un operator care este idle,poate 
+incepe executia lui T1(startT1) sau poate incepe executia lui t2(startT2).Dupa terminarea executiei T1(endT1) sau T2(endT2)
+operatorul revine in starea idle.
+
+Calculati invarianti si aratati ca:
+P1:Numarul total de operatori(care pot executa un task la un moment dat sau sunt idle) este 10
+P2:Numarul maxim de operatori care executa T1 este 4,iar numarul maxim de operatori care executa T2 este 6.
+
+2)
+
+3)
+Relatii de tradus:
+P1:S este in una dintre starile S_done,S_ready sau S_waiting
+si R este in R_done sau R_ready
+
+P2:
+
+P3:nr maxim din biti pe B este 5 la un memonet dat,dar nr maxim a lui C este 1

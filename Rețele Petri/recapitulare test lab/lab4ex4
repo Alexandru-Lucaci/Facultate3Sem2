@@ -1,0 +1,47 @@
+p 150.0 60.0 P1r 1 n
+t 150.0 165.0 send_msg sw 0 w n {} ne
+p 150.0 290.0 P1w 0 n
+p 335.0 165.0 m1 0 n
+t 515.0 165.0 getMsg 0 w n
+p 515.0 65.0 P2r 1 n
+p 865.0 50.0 P3r 1 n
+t 775.0 165.0 getMSg 0 w n
+p 875.0 165.0 P3d 0 n
+p 650.0 165.0 m2 0 n
+t 650.0 310.0 t2 0 w n
+p 515.0 310.0 P2d 0 n
+t 880.0 245.0 Send_conf 0 w n
+p 765.0 480.0 C2 0 n
+t 765.0 390.0 get_conf_p2 0 w n
+p 765.0 310.0 P2w 0 n
+p 510.0 390.0 P2_done_conf 0 n
+t 225.0 390.0 send_p1_conf 0 w n
+p 225.0 480.0 C1 0 n
+t 150.0 480.0 t7 0 w n
+e t7 0.4988550202 139.0035971 P1r 0.4987267876 125.0039999 1 n
+e P1w t7 1 n
+e C1 t7 1 n
+e send_p1_conf 0.25 325.0 P2r 0.5 286.0 1 n
+e send_p1_conf C1 1 n
+e P2_done_conf send_p1_conf 1 n
+e get_conf_p2 P2_done_conf 1 n
+e C2 get_conf_p2 1 n
+e P2w get_conf_p2 1 n
+e Send_conf 0.002429657697 131.0152663 C2 0.0 283.0 1 n
+e Send_conf 0.0 125.0 P3r 0.001090085304 146.0034246 1 n
+e P3d Send_conf 1 n
+e t2 P2w 1 n
+e getMSg P3d 1 n
+e P3r getMSg 1 n
+e m2 getMSg 1 n
+e t2 m2 1 n
+e P2d t2 1 n
+e getMsg P2d 1 n
+e m1 getMsg 1 n
+e P2r getMsg 1 n
+e send_msg P1w 1 n
+e send_msg m1 1 n
+e P1r 0.7526972832 59.00847397 send_msg 0.2463834648 44.01136217 1 n
+h lab4ex4
+
+

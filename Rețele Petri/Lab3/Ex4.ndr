@@ -1,0 +1,25 @@
+p 345.0 50.0 buffer_message 0 n
+t 645.0 50.0 get_message 0 w n
+t 55.0 50.0 send_message 0 w n
+p 50.0 265.0 S_waiting 0 n
+t 190.0 265.0 get_confirm 0 w n
+p 190.0 140.0 S_ready 1 n
+p 345.0 265.0 buffer_confirm 0 n
+t 490.0 265.0 send_confirm 0 w n
+p 645.0 265.0 R_done 0 n
+p 490.0 140.0 R_ready 1 n
+e get_confirm S_ready 1 n
+e send_message buffer_message 1 n
+e R_ready get_message 1 n
+e buffer_message get_message 1 n
+e get_message R_done 1 n
+e R_done send_confirm 1 n
+e send_confirm R_ready 1 n
+e send_confirm buffer_confirm 1 n
+e buffer_confirm get_confirm 1 n
+e S_waiting get_confirm 1 n
+e send_message S_waiting 1 n
+e S_ready send_message 1 n
+h Ex4
+
+
